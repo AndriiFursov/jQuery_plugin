@@ -5,7 +5,6 @@
             anchorsList    = $("<div>"),
             citiesList     = $("<div>");
             geoSelectorDiv = this;
-        var regionCode = [];
         
         citiesList.addClass("cities");
         
