@@ -42,20 +42,9 @@
                 
                                 citiesList.html("");
                 
-                                $.getJSON("http://evildevel.com/Test/City", 
-                                "region=" + $(this).attr("data-code"), 
-                                function(data, status){
-                                    if (status === "success") {
-                                        for (i = 0; i < data.length; i++) {
-                                            citiesList.append(data[i][1] + 
-                                                              '<br>');
-                                        }
-                                    } else if (status === "error" ||
-                                               status === "timeout" ||
-                                               status === "parsererror" ) {
-                                        alert ("Ошибка обработки данных");
-                                    }
-                                });
+                                getData ("region=" + $(this)
+                                .attr("data-code"));
+                                         
                                 return false;
                             });
                         }
@@ -69,10 +58,12 @@
         });     
 
 
-        if (defaultCode) {
+        if (defaultCode) { getData ("region=" + defaultCode); }
+        
+        
+        function getData (sendedData) {
             $.getJSON("http://evildevel.com/Test/City", 
-            "region=" + defaultCode, 
-            function(data, status){
+            sendedData, function(data, status){
                 if (status === "success") {
                     for (i = 0; i < data.length; i++) {
                         citiesList.append(data[i][1] + 
@@ -84,6 +75,7 @@
                     alert ("Ошибка обработки данных");
                 }
             });
+
         }
 
         return this;
