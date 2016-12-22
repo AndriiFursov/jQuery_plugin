@@ -52,11 +52,13 @@
                         for (i = 0; i < data.length; i++) {
                             var newAnchor = $("<a>");
                 
-                            newAnchor.html(data[i][0] + ' - ' + 
-                                           data[i][1] + '<br>');
-                            newAnchor.attr("href", "#");
-                            newAnchor.attr("title", "Список городов");
-                            newAnchor.click(functionFactory(data[i][0]));
+                            newAnchor
+                            .html(data[i][0] + ' - ' + data[i][1] + '<br>')
+                            .attr({
+                                "href": "#",
+                                "title": "Список городов"
+                            })
+                            .click(functionFactory(data[i][0]));
                 
                             anchorsList.append(newAnchor);
                         }
